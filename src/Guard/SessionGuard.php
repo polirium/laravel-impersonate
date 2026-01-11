@@ -1,6 +1,6 @@
 <?php
 
-namespace Lab404\Impersonate\Guard;
+namespace Polirium\Impersonate\Guard;
 
 use Illuminate\Auth\SessionGuard as BaseSessionGuard;
 use Illuminate\Contracts\Auth\Authenticatable;

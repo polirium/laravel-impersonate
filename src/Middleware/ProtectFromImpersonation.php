@@ -1,10 +1,10 @@
 <?php
 
-namespace Lab404\Impersonate\Middleware;
+namespace Polirium\Impersonate\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Redirect;
-use Lab404\Impersonate\Services\ImpersonateManager;
+use Polirium\Impersonate\Services\ImpersonateManager;
 
 class ProtectFromImpersonation
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace Lab404\Impersonate\Services;
+namespace Polirium\Impersonate\Services;
 
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Application;
-use Lab404\Impersonate\Events\LeaveImpersonation;
-use Lab404\Impersonate\Events\TakeImpersonation;
-use Lab404\Impersonate\Exceptions\InvalidUserProvider;
-use Lab404\Impersonate\Exceptions\MissingUserProvider;
+use Polirium\Impersonate\Events\LeaveImpersonation;
+use Polirium\Impersonate\Events\TakeImpersonation;
+use Polirium\Impersonate\Exceptions\InvalidUserProvider;
+use Polirium\Impersonate\Exceptions\MissingUserProvider;
 
 class ImpersonateManager
 {

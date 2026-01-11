@@ -1,6 +1,6 @@
 <?php
 
-namespace Lab404\Impersonate;
+namespace Polirium\Impersonate;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Auth\Events\Login;
@@ -8,14 +8,14 @@ use Illuminate\Auth\Events\Logout;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\Compilers\BladeCompiler;
-use Lab404\Impersonate\Guard\SessionGuard;
-use Lab404\Impersonate\Middleware\ProtectFromImpersonation;
-use Lab404\Impersonate\Services\ImpersonateManager;
+use Polirium\Impersonate\Guard\SessionGuard;
+use Polirium\Impersonate\Middleware\ProtectFromImpersonation;
+use Polirium\Impersonate\Services\ImpersonateManager;
 
 /**
  * Class ServiceProvider
  *
- * @package Lab404\Impersonate
+ * @package Polirium\Impersonate
  */
 class ImpersonateServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -113,9 +113,9 @@ class ImpersonateServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $router->macro('impersonate', function () use ($router) {
             $router->get('/impersonate/take/{id}/{guardName?}',
-                '\Lab404\Impersonate\Controllers\ImpersonateController@take')->name('impersonate');
+                '\Polirium\Impersonate\Controllers\ImpersonateController@take')->name('impersonate');
             $router->get('/impersonate/leave',
-                '\Lab404\Impersonate\Controllers\ImpersonateController@leave')->name('impersonate.leave');
+                '\Polirium\Impersonate\Controllers\ImpersonateController@leave')->name('impersonate.leave');
         });
     }
 

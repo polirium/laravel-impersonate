@@ -1,11 +1,11 @@
 <?php
 
-namespace Lab404\Tests;
+namespace Polirium\Tests;
 
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Request;
-use Lab404\Impersonate\Services\ImpersonateManager;
-use Lab404\Tests\Stubs\Models\User;
+use Polirium\Impersonate\Services\ImpersonateManager;
+use Polirium\Tests\Stubs\Models\User;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ImpersonateManagerTest extends TestCase

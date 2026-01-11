@@ -1,8 +1,8 @@
 <?php
 
-namespace Lab404\Tests;
+namespace Polirium\Tests;
 
-use Lab404\Impersonate\Services\ImpersonateManager;
+use Polirium\Impersonate\Services\ImpersonateManager;
 
 class ModelImpersonateTest extends TestCase
 {

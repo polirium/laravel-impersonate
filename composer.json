@@ -1,5 +1,5 @@
 {
-  "name": "lab404/laravel-impersonate",
+  "name": "polirium/laravel-impersonate",
   "description": "Laravel Impersonate is a plugin that allows to you to authenticate as your users.",
   "type": "library",
   "keywords": [
@@ -25,13 +25,13 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Marceau Casals",
-      "email": "marceau@casals.fr"
+      "name": "Polirium Team",
+      "email": "dev@polirium.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Lab404\\Impersonate\\": "src/"
+      "Polirium\\Impersonate\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -39,13 +39,13 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Lab404\\Tests\\": "tests/"
+      "Polirium\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Lab404\\Impersonate\\ImpersonateServiceProvider"
+        "Polirium\\Impersonate\\ImpersonateServiceProvider"
       ]
     }
   },

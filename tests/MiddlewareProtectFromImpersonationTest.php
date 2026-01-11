@@ -1,10 +1,10 @@
 <?php
 
-namespace Lab404\Tests;
+namespace Polirium\Tests;
 
 use Illuminate\Http\Request;
-use Lab404\Tests\Stubs\Models\User;
-use Lab404\Impersonate\Middleware\ProtectFromImpersonation;
+use Polirium\Tests\Stubs\Models\User;
+use Polirium\Impersonate\Middleware\ProtectFromImpersonation;
 
 class MiddlewareProtectFromImpersonationTest extends TestCase
 {

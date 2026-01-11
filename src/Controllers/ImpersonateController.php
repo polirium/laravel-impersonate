@@ -1,11 +1,11 @@
 <?php
 
-namespace Lab404\Impersonate\Controllers;
+namespace Polirium\Impersonate\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Lab404\Impersonate\Services\ImpersonateManager;
+use Polirium\Impersonate\Services\ImpersonateManager;
 
 class ImpersonateController extends Controller
 {

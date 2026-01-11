@@ -1,8 +1,8 @@
 <?php
 
-namespace Lab404\Tests;
+namespace Polirium\Tests;
 
-use Lab404\Tests\Stubs\Models\User;
+use Polirium\Tests\Stubs\Models\User;
 
 class BladeDirectivesTest extends TestCase
 {
