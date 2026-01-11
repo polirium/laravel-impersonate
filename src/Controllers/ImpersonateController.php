@@ -18,7 +18,7 @@ class ImpersonateController extends Controller
     public function __construct()
     {
         $this->manager = app()->make(ImpersonateManager::class);
-        
+
         $guard = $this->manager->getDefaultSessionGuard();
         $this->middleware('auth:' . $guard)->only('take');
     }
@@ -51,6 +51,9 @@ class ImpersonateController extends Controller
 
         if ($userToImpersonate->canBeImpersonated()) {
             if ($this->manager->take($request->user(), $userToImpersonate, $guardName)) {
+                // Store the current referer url to redirect back after leaving impersonation
+                session()->put('impersonate.origin_url', url()->previous());
+
                 $takeRedirect = $this->manager->getTakeRedirectTo();
                 if ($takeRedirect !== 'back') {
                     return redirect()->to($takeRedirect);
@@ -72,10 +75,23 @@ class ImpersonateController extends Controller
 
         $this->manager->leave();
 
+        // Redirect to origin url if exists
+        if (session()->has('impersonate.origin_url')) {
+            $url = session()->pull('impersonate.origin_url');
+            return redirect()->to($url);
+        }
+
         $leaveRedirect = $this->manager->getLeaveRedirectTo();
         if ($leaveRedirect !== 'back') {
             return redirect()->to($leaveRedirect);
         }
+
+        // Redirect to origin url if exists
+        if (session()->has('impersonate.origin_url')) {
+            $url = session()->pull('impersonate.origin_url');
+            return redirect()->to($url);
+        }
+
         return redirect()->back();
     }
 }

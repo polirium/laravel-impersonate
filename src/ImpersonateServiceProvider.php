@@ -39,7 +39,8 @@ class ImpersonateServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->app->alias(ImpersonateManager::class, 'impersonate');
 
-        $this->registerRoutesMacro();
+        // $this->registerRoutesMacro(); // Deprecated in favor of auto-loading
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->registerBladeDirectives();
         $this->registerMiddleware();
         $this->registerAuthDriver();
@@ -61,6 +62,9 @@ class ImpersonateServiceProvider extends \Illuminate\Support\ServiceProvider
         Event::listen(Logout::class, function ($event) {
             app('impersonate')->clear();
         });
+
+        // Inject UI
+        $this->app['router']->pushMiddlewareToGroup('web', \Polirium\Impersonate\Middleware\InjectImpersonationUI::class);
     }
 
     /**
