@@ -43,7 +43,7 @@ class ImpersonateController extends Controller
             abort(403);
         }
 
-        if (!$request->user()->canImpersonate()) {
+        if (! $request->user()->canImpersonate()) {
             abort(403);
         }
 
@@ -69,7 +69,7 @@ class ImpersonateController extends Controller
      */
     public function leave()
     {
-        if (!$this->manager->isImpersonating()) {
+        if (! $this->manager->isImpersonating()) {
             abort(403);
         }
 
@@ -78,6 +78,7 @@ class ImpersonateController extends Controller
         // Redirect to origin url if exists
         if (session()->has('impersonate.origin_url')) {
             $url = session()->pull('impersonate.origin_url');
+
             return redirect()->to($url);
         }
 
@@ -89,6 +90,7 @@ class ImpersonateController extends Controller
         // Redirect to origin url if exists
         if (session()->has('impersonate.origin_url')) {
             $url = session()->pull('impersonate.origin_url');
+
             return redirect()->to($url);
         }
 

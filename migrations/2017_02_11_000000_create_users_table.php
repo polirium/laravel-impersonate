@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
@@ -15,8 +15,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table)
-        {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -29,26 +28,26 @@ class CreateUsersTable extends Migration
 
         DB::table('users')->insert([
             [
-                'name'       => 'Admin',
-                'email'      => 'admin@test.rocks',
-                'password'   => bcrypt('password'),
-                'is_admin'   => 1,
+                'name' => 'Admin',
+                'email' => 'admin@test.rocks',
+                'password' => bcrypt('password'),
+                'is_admin' => 1,
                 'can_be_impersonated' => 1,
                 'created_at' => Carbon::now()->toDateTimeString(),
             ],
             [
-                'name'       => 'User',
-                'email'      => 'user@test.rocks',
-                'password'   => bcrypt('password'),
-                'is_admin'   => 0,
+                'name' => 'User',
+                'email' => 'user@test.rocks',
+                'password' => bcrypt('password'),
+                'is_admin' => 0,
                 'can_be_impersonated' => 1,
                 'created_at' => Carbon::now()->toDateTimeString(),
             ],
             [
-                'name'       => 'SuperAdmin',
-                'email'      => 'superadmin@test.rocks',
-                'password'   => bcrypt('password'),
-                'is_admin'   => 1,
+                'name' => 'SuperAdmin',
+                'email' => 'superadmin@test.rocks',
+                'password' => bcrypt('password'),
+                'is_admin' => 1,
                 'can_be_impersonated' => 0,
                 'created_at' => Carbon::now()->toDateTimeString(),
             ],

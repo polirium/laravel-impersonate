@@ -116,10 +116,14 @@ class ImpersonateServiceProvider extends \Illuminate\Support\ServiceProvider
         $router = $this->app['router'];
 
         $router->macro('impersonate', function () use ($router) {
-            $router->get('/impersonate/take/{id}/{guardName?}',
-                '\Polirium\Impersonate\Controllers\ImpersonateController@take')->name('impersonate');
-            $router->get('/impersonate/leave',
-                '\Polirium\Impersonate\Controllers\ImpersonateController@leave')->name('impersonate.leave');
+            $router->get(
+                '/impersonate/take/{id}/{guardName?}',
+                '\Polirium\Impersonate\Controllers\ImpersonateController@take'
+            )->name('impersonate');
+            $router->get(
+                '/impersonate/leave',
+                '\Polirium\Impersonate\Controllers\ImpersonateController@leave'
+            )->name('impersonate.leave');
         });
     }
 

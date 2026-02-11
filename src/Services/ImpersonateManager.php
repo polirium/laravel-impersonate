@@ -2,8 +2,6 @@
 
 namespace Polirium\Impersonate\Services;
 
-use Exception;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Application;
@@ -14,7 +12,7 @@ use Polirium\Impersonate\Exceptions\MissingUserProvider;
 
 class ImpersonateManager
 {
-    const REMEMBER_PREFIX = 'remember_web';
+    public const REMEMBER_PREFIX = 'remember_web';
 
     /** @var Application $app */
     private $app;
@@ -50,7 +48,7 @@ class ImpersonateManager
             throw new InvalidUserProvider($guardName);
         }
 
-        if (!($modelInstance = $userProvider->retrieveById($id))) {
+        if (! ($modelInstance = $userProvider->retrieveById($id))) {
             $model = $this->app['config']->get("auth.providers.$providerName.model");
 
             throw (new ModelNotFoundException())->setModel(
@@ -122,6 +120,7 @@ class ImpersonateManager
 
         } catch (\Exception $e) {
             unset($e);
+
             return false;
         }
 
@@ -145,6 +144,7 @@ class ImpersonateManager
 
         } catch (\Exception $e) {
             unset($e);
+
             return false;
         }
 
@@ -231,7 +231,7 @@ class ImpersonateManager
         $key = $cookie->keys()->first();
         $val = $cookie->values()->first();
 
-        if (!$key || !$val) {
+        if (! $key || ! $val) {
             return;
         }
 
@@ -243,7 +243,7 @@ class ImpersonateManager
 
     protected function extractAuthCookieFromSession(): void
     {
-        if (!$session = $this->findByKeyInArray(session()->all(), static::REMEMBER_PREFIX)->first()) {
+        if (! $session = $this->findByKeyInArray(session()->all(), static::REMEMBER_PREFIX)->first()) {
             return;
         }
 
